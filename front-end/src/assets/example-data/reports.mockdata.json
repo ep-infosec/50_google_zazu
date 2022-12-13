@@ -1,0 +1,14 @@
+[{
+    "_id": "5bec661323fa2155c2c646a5",
+    "name": "Elephant Impression Report",
+    "created_at": "Wed Oct 08 1980 11:59:28 GMT-0400 (Eastern Daylight Time)",
+    "organizations": [{
+      "_id": "5bdb6e48dcd62b26f6c194d8",
+      "name": "Elephant"
+    },
+    {
+      "_id": "5bf4594bdc32af4578a18cde",
+      "name": "Cats"
+    }]
+  }
+]

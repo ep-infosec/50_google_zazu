@@ -1,0 +1,72 @@
+<div class="form-container"  [ngClass]="{'disable-display': sending}">
+  <div class="card">
+    <div class="form" *ngIf="orgForm && org">
+      <!-- *********************************  -->
+      <form [formGroup]="orgForm" (ngSubmit)="onSubmit()">
+        <h2 class="title"> Edit Organization: <span class="input-header">{{org.name}} </span></h2>
+        <hr>
+        <h4 class="input-header"> Please enter organization information </h4>
+        <div class="row">
+          <i class="material-icons form-icon">
+            business
+          </i>
+          <mat-form-field appearance="fill" style="width:80%">
+            <mat-label>Organization Name</mat-label>
+            <input matInput type="text" id="name" placeholder="Enter Name" formControlName="orgName">
+            <mat-error>
+              Organization name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <i class="material-icons info-icon" matTooltip="{{orgNameTooltip}}">
+            info
+          </i>
+        </div>
+        <h4 class="input-header">Categories
+            <i class="material-icons info-icon" matTooltip="{{categoryToolTip}}">
+              info
+            </i>
+        </h4>
+        <div formArrayName="itemRows">
+          <div *ngFor="let itemrow of orgForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
+            <div class="row">
+              <i class="material-icons form-icon">
+                book
+              </i>
+              <mat-form-field appearance="fill" style="width:80%">
+                <mat-label>Category </mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="itemname" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of options | category: this.orgForm.controls.itemRows.controls[i].controls.itemname.value" [value]="option">
+                    <span>{{option}} </span>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error>
+                  Category name is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="orgForm.get('itemRows').getError('duplicate')">
+                  Duplicated Category
+                </mat-error>
+              </mat-form-field>
+              <i class="material-icons close-icon" *ngIf="orgForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)">
+                close
+              </i>
+            </div>
+          </div>
+        </div>
+        <p class="custom-error" *ngIf="orgForm.get('itemRows').getError('duplicate')">
+            Cannot have duplicate categories </p>
+        <p class="add-row" (click)="addNewRow('')">+ Add another category</p>
+        <div class="buttons">
+          <button mat-button routerLink="../">Cancel</button>
+          <button class="done primary" [disabled]="!orgForm.valid" [ngClass]="{'button-disabled': !orgForm.valid}" mat-flat-button type="submit">Done
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div [ngClass]="{'disable-display': !sending}" class="spinner-container">
+  <mat-spinner class="spinner"></mat-spinner>
+  <h3 class="title">Editing Information</h3>
+  <p >Please wait</p>
+</div>

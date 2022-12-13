@@ -1,0 +1,19 @@
+  {
+    "_id": "5bb64d2028929bcb295337ab",
+    "name": "Report Number 19",
+    "link": "https://datastudio.com/randomUrl1234",
+    "datasources": ["Data Source 1","Data Source 2"],
+    "created_at": "Fri May 04 2001 13:16:34 GMT-0400 (Eastern Daylight Time)",
+    "dataStudioSourceIDs": ["DSS 1", "DSS2"],
+    "createdBy": "First Last",
+    "updatedBy": "First Last",
+    "organizations": [{
+      "_id": "3",
+      "name": "The Old Navy"
+    },
+    {
+      "_id": "1",
+      "name": "The Lego Company"
+    }
+    ]
+  }

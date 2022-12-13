@@ -1,0 +1,91 @@
+<div class="form-container" [ngClass]="{'disable-display': sending}" *ngIf="initiated">
+  <div class="card">
+    <div class="form">
+      <form [formGroup]="dataruleFormGroup" *ngIf="dataruleFormGroup && dataRule" (ngSubmit)="onSubmit()">
+        <h2 class="title">Edit Data Rule: <span class="input-header">{{dataRule.name}} </span> </h2>
+        <hr>
+        <div class="row">
+          <h4 class="input-header"> Editing rule for {{dataRule.organization.name}}</h4>
+          <h4 class="input-header"> Data Source:  {{dataRule.datasource}}</h4>
+          <i class="material-icons form-icon">
+            dns
+          </i>
+          <mat-form-field appearance="fill" style="width:80%">
+            <mat-label>Rule Name</mat-label>
+            <input formControlName="name" matInput placeholder="Enter Name">
+            <mat-error>
+              Rule name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <i class="material-icons info-icon" matTooltip="{{tooltip.name}}">
+            info
+          </i>
+        </div>
+        <div class="row">
+          <i class="material-icons form-icon">
+            priority_high
+          </i>
+          <mat-form-field appearance="fill" style="width:80%">
+            <mat-label>Identifier</mat-label>
+            <mat-select formControlName="identifier">
+                <mat-option *ngFor="let identifier of identifiers" value="{{identifier.name}}">{{identifier.name}}</mat-option>
+
+              </mat-select>
+            <mat-error>
+              Identifier is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <i class="material-icons info-icon" matTooltip="{{tooltip.identifier}}">
+            info
+          </i>
+        </div>
+        <div class="row">
+          <i class="material-icons form-icon">
+            compare
+          </i>
+          <mat-form-field appearance="fill" style="width:80%">
+            <mat-label>Condition</mat-label>
+            <mat-select formControlName="condition">
+              <mat-option value="equals">Equals</mat-option>
+              <mat-option value="contains">Contains</mat-option>
+              <mat-option value="excludes">Excludes</mat-option>
+            </mat-select>
+            <mat-error>
+              Condition is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <i class="material-icons info-icon" matTooltip="{{tooltip.condition}}">
+            info
+          </i>
+
+        </div>
+        <div class="row">
+          <i class="material-icons form-icon">
+            title
+          </i>
+          <mat-form-field appearance="fill" style="width:80%">
+            <mat-label>Token</mat-label>
+            <input formControlName="token" matInput placeholder="Select Data Source">
+            <mat-error>
+              Token is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <i class="material-icons info-icon" matTooltip="{{tooltip.token}}">
+            info
+          </i>
+        </div>
+        <div class="buttons">
+          <button mat-button routerLink="../../">Cancel</button>
+          <button class="done primary" [disabled]="!dataruleFormGroup.valid" [ngClass]="{'button-disabled': !dataruleFormGroup.valid}"
+            mat-flat-button type="submit">Done </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="{'disable-display': !sending}" class="spinner-container">
+  <mat-spinner class="spinner"></mat-spinner>
+  <h3 class="title">Editing Information</h3>
+  <p >Please wait</p>
+</div>

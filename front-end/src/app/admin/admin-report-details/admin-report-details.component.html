@@ -1,0 +1,122 @@
+<div *ngIf="(organization != null && user!= null && report != null && viewInitialized && !deleting) || (!organization  && !userView && report != null && viewInitialized && !deleting) || (!organization && !user && report != null && viewInitialized && !deleting)">
+
+  <div class="breadcrumb-container"  *ngIf="viewInitialized">
+    <!-- Breadcrumbs for report when navigation from organization list -->
+    <div class="breadcrumb" *ngIf="!userView && organizationID != undefined"> <span routerLink="../../../"> <i class="material-icons">
+          business </i> Organization List </span> &nbsp;&nbsp; <i class="material-icons arrow"> keyboard_arrow_right </i> <i style="margin-left: -14px"
+        class="material-icons arrow"> keyboard_arrow_right </i>&nbsp;&nbsp; <span routerLink="../../">
+        {{organization.name}}</span>
+      &nbsp;&nbsp; <i class="material-icons arrow"> keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow">
+        keyboard_arrow_right </i>&nbsp;&nbsp; <span class="active"> {{report.name}} </span> </div>
+
+    <!-- Breadcrumbs for report when navigation from user under organization list -->
+    <div class="breadcrumb" *ngIf="userView && organizationID != undefined"> <span routerLink="../../../../../"> <i class="material-icons">
+          business </i> Organization List </span>
+      &nbsp;&nbsp; <i class="material-icons arrow"> keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow">
+        keyboard_arrow_right </i>&nbsp;&nbsp; <span routerLink="../../../../">
+        {{organization.name}}</span>
+      &nbsp;&nbsp; <i class="material-icons arrow"> keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow">
+        keyboard_arrow_right </i>&nbsp;&nbsp; <span routerLink="../../"> {{user.firstName}} {{user.lastName}} </span> &nbsp;&nbsp; <i class="material-icons arrow">
+        keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow"> keyboard_arrow_right </i>&nbsp;&nbsp; <span
+        class="active"> {{report.name}}
+        ({{selectedOrg.name}})</span></div>
+
+    <!-- Breadcrumbs for report when navigation from user under user list -->
+    <div class="breadcrumb" *ngIf="organizationID === undefined && userID != undefined"> <span routerLink="../../../../"> <i class="material-icons">
+          person_outline </i> User List </span>
+      &nbsp;&nbsp; <i class="material-icons arrow"> keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow">
+        keyboard_arrow_right </i>&nbsp;&nbsp; <span routerLink="../../">{{user.firstName}} {{user.lastName}}</span> &nbsp;&nbsp; <i class="material-icons arrow">
+        keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow"> keyboard_arrow_right </i>&nbsp;&nbsp; <span
+        class="active"> {{report.name}}
+        ({{selectedOrg.name}})</span></div>
+
+    <!-- Breadcrumbs for report when navigation from report list -->
+    <div class="breadcrumb" *ngIf="organizationID === undefined && userID === undefined"> <span routerLink="../../"> <i class="material-icons">
+          assessment </i> Report List </span>
+      &nbsp;&nbsp; <i class="material-icons arrow"> keyboard_arrow_right </i> <i style="margin-left: -14px" class="material-icons arrow">
+        keyboard_arrow_right </i>&nbsp;&nbsp; <span class="active"> {{report.name}} ({{selectedOrg.name}})</span> </div>
+  </div>
+
+  <div *ngIf="new || edited || shared" class="new-bar">
+    <h4><i class="material-icons check">
+        check
+      </i>
+      <span *ngIf="new"> Success: Report Created </span>
+      <span *ngIf="edited"> Success: Report Edited </span>
+      <span *ngIf="shared"> Success: Report Successfully Shared </span>
+      <i (click)="closeNewBar()" class="material-icons close">
+        close
+      </i></h4>
+  </div>
+  <div class="main-content-view" *ngIf="viewInitialized" [ngClass]="{'new': new || edited || shared }">
+    <div class="left-main-content-view">
+      <iframe class="report" [src]="embedLink" frameborder="0"
+        style="border:0" allowfullscreen></iframe>
+    </div>
+    <div class="right-main-content-view">
+      <div class="filter information">
+        <div class="more-button" style="margin-top: -10px">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon color="more-color">more_vert</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <!--
+            <button mat-menu-item (click)="editReport()">Edit Info</button>
+            -->
+            <button mat-menu-item (click)="editAccess()" *ngIf="this.report.organizations.length > 1" >Edit Access </button>
+            <button mat-menu-item (click)="openDialog()">Delete</button>
+          </mat-menu>
+        </div>
+        <h4 class="info-title"> Report Information</h4>
+        <p> Name: <span class="info">{{report.name}} </span></p>
+        <p>Organization: <span class="info">{{selectedOrg.name}} </span></p>
+        <p>Date: <span class="info"> {{report.created_at | date }}</span> </p>
+        <p>Datastudio Link: <span class="info"> {{report.link}}</span></p>
+
+      </div>
+
+      <div class="metadata">
+        <mat-accordion>
+          <mat-expansion-panel style="box-shadow:none">
+            <mat-expansion-panel-header style="padding: 0">
+              <mat-panel-title>
+                <h4 class="info-title" style="padding-top: 10px;"> Metadata</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p> <span class="info">Datasources:</span> </p>
+          <div *ngFor="let datasource of report.datasources; let i = index">
+          <p>Big Query: <span class="info">{{datasource.bigquery}} </span> </p>
+          <p>Data Studio:<span class="info"> {{datasource.datastudio}} </span> </p>
+          </div>
+            <p>Created By: <span class="info">{{ this.createdByUser.firstName}} {{this.createdByUser.lastName}}</span> </p>
+            <!--
+            <p>Updated By: <span class="info">{{ report.updatedBy}}</span></p>
+             -->
+            <p>Who can see it: </p>
+            <p *ngFor="let org of report.organizations"> <span class="info"> &nbsp;&nbsp;&#9679; &nbsp;{{org.name}}
+              </span></p>
+            <br>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!viewInitialized && !error" style="margin:auto; padding-top: 80px; text-align: center">
+  <mat-spinner style="margin:auto"></mat-spinner>
+  <p style="text-align: center;">Report Loading...</p>
+</div>
+
+<div *ngIf="viewInitialized && deleting" style="margin:auto; padding-top: 80px; text-align: center">
+  <mat-spinner style="margin:auto"></mat-spinner>
+  <p style="text-align: center;">Deleting Report</p>
+  <p style="text-align: center;">Please Wait</p>
+</div>
+
+<div *ngIf="error" style="text-align: center; width: 100%;">
+    <app-error-message [errorMessage]="errorMessage" (tryAgain)="reInitialize()"></app-error-message>
+  </div>
+

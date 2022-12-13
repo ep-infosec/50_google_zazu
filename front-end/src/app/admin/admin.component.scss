@@ -1,0 +1,177 @@
+@import "main-style-variables.scss";
+
+
+
+// Side Navigation Menus Style
+.side-nav {
+  width: $side-nav-max;
+  height: 100%;
+  background-color: $sidenav-color;
+  position: fixed;
+  -webkit-transition: padding-left 0.5s;
+  transition: padding-left 0.5s;
+  -webkit-transition: width 0.5s;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 0.5s;
+  overflow: hidden;
+  z-index: 40;
+
+
+}
+
+
+
+.right-content-ghost-initiated {
+  margin-left: 0 !important;
+  transition: none !important;
+}
+
+// Company Logo  &  Name
+.company {
+  height: 64px;
+
+  .icon-container {
+    height: 64px;
+    width: 64px;
+    position: relative;
+
+    .icon {
+      height: 45px;
+      width: 45px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto auto;
+      .icon-image {
+        height: 45px;
+        width: 45px;
+        background-size: 45px;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  .name {
+    position: absolute;
+    top: 22px;
+    font-size: $text-size;
+    font-weight: bold;
+    color: $company-name-color;
+    left: 70px;
+
+  }
+}
+
+
+// Side Navigation Containers, Icon and text
+.menu-container {
+  position: relative;
+
+  .menu-active {
+    background-color: $sidenav-active-color;
+
+
+  }
+  .menu.menu-active {
+    color: $sidenav-text-active-color !important;
+  }
+
+  .menu:hover{
+    cursor: pointer;
+  }
+
+  .menu {
+    height: 50px;
+    color: $menu-color;
+
+    .material-icons {
+      font-size: 30px;
+      position: relative;
+      top: 11px;
+      left: 16px;
+    }
+
+    .text {
+      position: absolute;
+      font-size: 17px;
+      left: 64px;
+      margin-top: 17px;
+    }
+  }
+}
+
+.side-nav-minimized {
+  width: $side-nav-minimized !important;
+}
+
+.toobar-max {
+  max-width: calc(100vw - #{$side-nav-minimized}) !important;
+}
+
+.toolbar {
+  background-color: $toolbar-color;
+  color: $toolbar-text-color;
+  z-index: 20;
+  position: fixed;
+  // max-width: calc(100vw -  #{$side-nav-max});
+  // -webkit-transition: max-width 0.5s;
+
+
+  .menu-icon {
+    min-width: unset;
+    padding: 0;
+
+    i {
+      font-size: 2.5em;
+    }
+  }
+
+  .menu-icon.help {
+    position:fixed;
+    right: 4.5em;
+  }
+  .menu-icon.logout {
+    position:fixed;
+    right: 1em;
+  }
+
+  .menu-icon.right {
+    margin: 0 10px ;
+    i {
+      font-size: 2.2em;
+    }
+  }
+
+}
+
+
+.right-content {
+  margin-left: $side-nav-max;
+  -webkit-transition: margin-left 0.5s;
+  transition: margin-left 0.5s;
+}
+
+
+
+.main-content {
+  background-color: $main-content-color;
+  min-height: calc(100vh - 64px);
+  padding-top: 64px;
+  height: 100%;
+  height:  auto;
+}
+
+
+
+
+.right-content-minimized {
+  margin-left: $side-nav-minimized !important;
+}
+
+
+.main-content-ghost-initiated {
+  width: 100% !important;
+  padding-top: 0 !important;
+}

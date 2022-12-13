@@ -1,0 +1,85 @@
+<div class="main">
+
+  <!-- Side Navigation Menu-->
+  <div class="side-nav" [ngClass]="{'side-nav-minimized': minimized}" *ngIf="!ghostStatus">
+    <!-- Company Title and Logo goes Here-->
+    <div class="company">
+      <div class="icon-container">
+        <div class="icon">
+          <div class="icon-image">
+
+          </div>
+        </div>
+      </div>
+      <span class="name"> {{companyName}} </span>
+    </div>
+
+    <!-- Side Navigation Menus -->
+    <div class="menu-container">
+
+      <!-- Menu # 1 -->
+      <div class="menu" routerLink="o" routerLinkActive="menu-active">
+        <i class="material-icons">
+          business
+        </i>
+        <span class="text">
+          Organizations
+        </span>
+      </div>
+
+      <!-- Menu # 2 -->
+      <div class="menu" routerLink="reports" routerLinkActive="menu-active">
+        <i class="material-icons">
+          assessment
+        </i>
+        <span class="text">
+          Reports
+        </span>
+      </div>
+
+      <!-- Menu # 3 -->
+      <div class="menu" routerLink="users" routerLinkActive="menu-active">
+        <i class="material-icons">
+          person_outline
+        </i>
+        <span class="text">
+          Users
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-content" [ngClass]="{'right-content-minimized': minimized && !ghostStatus,'right-content-ghost-initiated' : ghostStatus}">
+    <!-- Top Toolbar -->
+    <mat-toolbar class="toolbar" [ngClass]="{'toobar-max': minimized}" *ngIf="!ghostStatus">
+      <button mat-button class="menu-icon" (click)="toggleMenu()">
+        <i class="material-icons ">
+          menu
+        </i>
+      </button>
+      <div style="flex: 1 1 auto">
+      </div>
+      <button mat-button class="menu-icon help"   matTooltip="FAQs"
+      matTooltipPosition="below">
+        <i class="material-icons">
+          help_outline
+        </i>
+      </button>
+      <button mat-button class="menu-icon logout"  matTooltip="Logout"
+      matTooltipPosition="below" (click)="logout()">
+        <i class="material-icons">
+          power_settings_new
+        </i>
+      </button>
+
+
+    </mat-toolbar>
+
+    <!-- Main Content -->
+    <div class="main-content" [ngClass]="{'main-content-ghost-initiated' : ghostStatus}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+

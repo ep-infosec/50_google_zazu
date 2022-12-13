@@ -1,0 +1,870 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'main-style-variables.scss';
+
+.primary {
+  background-color: $primary-button-color !important;
+}
+
+.danger {
+  background-color: $danger-color !important;
+}
+
+.plain {
+  background-color: $plain-color !important;
+}
+
+.mat-primary-button {
+  background-color: $primary-button-color !important;
+  color: white;
+}
+
+.mat-tooltip {
+  font-size: 15px !important;
+}
+
+.disable-display {
+  display: none;
+}
+
+/******* LOADING SPINNER ********/
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $primary;
+}
+
+.spinner-container {
+  margin: auto;
+  padding-top: 50px;
+  .spinner {
+    margin: auto;
+  }
+  p {
+    text-align: center;
+    margin: 3px 0;
+  }
+  .title {
+    text-align: center;
+    margin: 3px 0;
+    font-weight: 500;
+  }
+}
+
+/***** CREATE NEW REPORT STYLES POPUP MENU *************/
+
+.mat-horizontal-content-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.cdk-overlay-container .new-report-menu.mat-menu-panel {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.cdk-overlay-container .new-report-menu.mat-menu-panel button .mat-icon {
+  background-color: $primary;
+
+  color: white !important;
+
+  border-radius: 50%;
+
+  padding: 7px;
+}
+
+.new-report-menu {
+  z-index: 100;
+}
+
+.cdk-overlay-container .new-report-menu.mat-menu-panel button .text {
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 2px 4px gray;
+  border-radius: 5px;
+}
+
+.cdk-overlay-container {
+  // background-color: rgba(50, 50, 50, 0.5);
+}
+
+.new-report-menu-overlay {
+  z-index: 50;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(50, 50, 50, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+/**** BUTTONS STUFF   */
+.button-disabled {
+  opacity: 0.5;
+  color: white !important;
+}
+
+/***** EMPTY LIST STYLE *****/
+.empty-list {
+  margin: auto;
+  padding-top: 50px;
+  text-align: center;
+
+  .main {
+    font-size: 200px;
+    color: $empty-list-icon-color;
+  }
+
+  .add {
+    position: relative;
+    margin-left: -55px;
+    margin-bottom: -55px;
+    bottom: 25px;
+    color: white;
+  }
+
+  .title,
+  .create-text {
+    margin: 5px;
+  }
+
+  .title {
+    color: $empty-list-main-title-color;
+  }
+
+  .create-text {
+    color: $create-text-color;
+  }
+
+  .create-text:hover {
+    cursor: pointer;
+  }
+}
+
+/******* PAGINATION STYLES *****/
+
+.pagination {
+  .mat-white {
+    background-color: white;
+  }
+
+  button {
+    color: grey;
+  }
+}
+
+html,
+body {
+  //min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/****** BREADCRUMBS STYLES *****/
+
+.breadcrumb-container {
+  width: 100%;
+  background-color: $breadcrumb-background-color;
+  box-shadow: 0 1px 2px gray;
+  height: 50px;
+  position: fixed;
+  z-index: 20;
+  font-size: 15px;
+  line-height: 50px;
+  font-weight: 500;
+  padding-left: 30px;
+  color: $breadcrumb-non-active;
+
+  span:hover {
+    cursor: pointer;
+    color: $breadcrumb-hover;
+  }
+
+  i {
+    position: relative;
+    top: 5px;
+  }
+
+  .arrow {
+    font-size: 20px;
+    top: 4px;
+  }
+
+  .breadcrumb {
+    margin: auto;
+  }
+
+  .active,
+  .active:hover {
+    color: $breadcrumb-active;
+    cursor: initial;
+  }
+}
+
+/****** NEW BAR FOR CREATE NEW NOTIFICATION *****/
+.new-bar {
+  background-color: $success;
+  width: 100%;
+  text-align: center;
+  height: 45px;
+  position: fixed;
+  margin-top: 50px;
+  box-shadow: 0 3px 4px lightgray;
+  z-index: 999;
+  h4 {
+    color: white;
+    margin: 0;
+    margin-top: 5px;
+    margin-right: 10%;
+    font-weight: 500;
+    font-size: 0.9em;
+    i {
+      position: relative;
+      top: 5px;
+    }
+
+    i.close {
+      position: fixed;
+      top: initial;
+      right: 20px;
+      margin-top: 6px;
+    }
+
+    i.close:hover {
+      cursor: pointer;
+    }
+
+    i.check {
+      padding-right: 10px;
+      font-weight: bold;
+    }
+  }
+  transition: height 0.5s;
+}
+
+
+/**** MAIN CONTENT CONTAINER ****/
+
+
+.company {
+  .icon-container {
+    .icon {
+      .icon-image {
+        background: $icon;
+      }
+    }
+  }
+}
+
+.signing-container {
+  .signing-card{
+    .icon {
+      height: 60px;
+      width: 60px;
+      margin:auto;
+      .icon-image {
+        height: 60px;
+        width: 60px;
+        background-size: 60px !important;
+        background-repeat: no-repeat;
+        background: $icon;
+      }
+    }
+  }
+}
+
+.main-content-view.new {
+  padding-top: 100px;
+}
+.main-content-view {
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  transition: padding-top 0.5s;
+
+  .full-content-view {
+    width: 100%;
+  }
+
+  .more-button {
+    float: right;
+
+    .mat-more-color {
+      color: #757575;
+    }
+  }
+
+  .left-main-content-view {
+    width: 65%;
+    .no-result {
+      text-align: center;
+      margin: 5px 0;
+      .icon {
+        text-align: center;
+        i {
+          font-size: 100px;
+          color: $no-result-icon-color;
+        }
+      }
+      .title {
+        font-weight: 500;
+        color: $no-result-title-color;
+        margin: 5px 0;
+      }
+      .text {
+        text-align: center;
+        color: $no-result-text-color;
+        margin: 0;
+      }
+    }
+  }
+
+  .right-main-content-view {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}
+
+/******** CARD STYLES *****/
+.list {
+  .card {
+    border-radius: $card-border-radius;
+    border: $card-border;
+    max-width: 1080px;
+
+    .container {
+      padding: 10px 20px;
+    }
+  }
+
+  .card:hover {
+    cursor: pointer;
+    border-color: $card-color-hover;
+  }
+}
+
+.details {
+  .container {
+    max-width: 500px;
+    padding: 10px 20px;
+  }
+}
+
+.card {
+  margin: 12px 0;
+  box-shadow: $card-box-shadow;
+  background-color: $card-background-color;
+  width: calc(100%-20px);
+
+  .container {
+    max-width: 500px;
+  }
+
+  .title {
+    color: $card-title-color;
+    margin: 0;
+    font-weight: black;
+  }
+
+  p.secondary,
+  p.content {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .secondary {
+    color: $card-secondary-color;
+    margin: 2.5px 0;
+  }
+
+  .content {
+    color: $card-content-color;
+    margin: 0;
+  }
+
+  .stats {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    color: $card-tertiary-color;
+    font-weight: 500;
+    font-size: 18px;
+
+    i {
+      position: relative;
+      top: 5px;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .middle {
+      text-align: center;
+      width: 100%;
+    }
+
+    .right {
+      float: right;
+    }
+  }
+}
+
+/***** SORT AND FILTER STYLE *****/
+.right-main-content-view {
+  .filter,
+  .sort {
+    padding: 15px;
+    background-color: $filter-background-color;
+    margin-top: 13px;
+    margin-left: 15px;
+    max-width: 300px;
+    box-shadow: $filter-box-shadow;
+    border: $filter-card-border-color;
+
+    .title {
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: initial;
+    }
+
+    .checkbox,
+    .radio {
+      font-size: 13px;
+      width: 100%;
+      padding-left: 30px;
+      margin: 5px 0;
+      font-weight: 500;
+    }
+  }
+
+  .filter {
+    .search,
+    .select {
+      font-size: 12px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .mat-stroked-button.reset {
+      min-height: 23px !important;
+      min-width: 46px !important;
+      font-size: 12px !important;
+      line-height: 0px;
+      color: $filter-reset-button-color;
+      border-color: $filter-reset-button-color;
+      border-radius: 2px;
+      float: right;
+      margin-top: -5px;
+    }
+
+    .mat-raised-button.search {
+      border: $filter-search-button-border;
+      border-radius: 2px;
+    }
+  }
+
+  .mat-primary-button {
+    background-color: $primary-button-color !important;
+  }
+
+  .add-button {
+    float: right;
+    margin: 40px 20px;
+
+    .button-fab {
+      width: 90px;
+      height: 90px;
+      line-height: 14px;
+      font-size: 50px;
+      color: white;
+
+      .plus-icon {
+        background-color: #0877c1;
+        position: relative;
+        top: 15px;
+        z-index: 20;
+        left: 25px;
+        font-size: 25px;
+        border-radius: 50%;
+        border: 4px solid white;
+        font-weight: normal;
+      }
+
+      .back-icon {
+        position: relative;
+        margin-left: -25px;
+        font-size: 45px;
+        color: #ffffff;
+        font-weight: normal;
+        right: 5px;
+      }
+
+      &::ng-deep .mat-button-wrapper {
+        line-height: 14px;
+        padding: 0;
+
+        .mat-icon {
+          font-size: 54px;
+          padding-right: 4px;
+          padding-top: 4px;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+/****** FORMS STYLE ******/
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $checkbox-active !important;
+}
+
+.mat-ripple-element {
+  background: $form-ripple-color !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $radio-button-active;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: $radio-button-active;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  color: $form-field-focused !important;
+}
+
+.label-color {
+  color: $mat-label-color !important;
+}
+
+.error-paragraph {
+  margin: 0;
+  margin-top: 5px;
+  color: $danger-color;
+  font-size: 80%;
+}
+
+.text-click-redirect {
+  padding-left:0; padding-top: 5px; color: $primary-button-color;
+  font-size: 80%;
+}
+
+.text-click-redirect:hover {
+  cursor:pointer;
+}
+
+.form-container {
+  padding: 30px;
+  max-width: 900px;
+  width: 75%;
+
+  .form {
+    padding: 20px 20px;
+  }
+
+  .row {
+    width: 100%;
+  }
+
+  hr {
+    border-top: 1px solid #d8d8d8;
+  }
+
+  .add-another {
+    max-width: 500px;
+    margin-left: 34px;
+    margin-right: 34px;
+    width: 100%;
+  }
+
+  .form-icon {
+    color: $form-icon-color;
+    padding-right: 10px;
+  }
+
+  .info-icon {
+    color: $info-icon-color;
+    padding-left: 10px;
+  }
+
+  .close-icon {
+    color: $form-icon-color;
+    padding-left: 10px;
+  }
+
+  .add-row {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    padding-left: 32px;
+    color: $primary-button-color;
+  }
+
+  .custom-error {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    padding-left: 32px;
+    color: $danger-color;
+  }
+
+  .add-row:hover {
+    cursor: pointer;
+  }
+
+  .close-icon:hover {
+    color: $info-icon-color;
+    cursor: pointer;
+  }
+
+  .buttons {
+    padding-top: 15px;
+    text-align: right;
+
+    .done {
+      margin-left: 10px;
+    }
+  }
+
+  .mat-form-field {
+    max-width: 500px;
+    font-size: 15px;
+    color: #565d61;
+  }
+
+  .input-header {
+    margin: 0;
+    margin-bottom: 10px;
+    color: $input-header-color;
+
+    .info-icon {
+      position: relative;
+      top: 6px;
+      padding-left: 5px;
+    }
+  }
+
+  .description {
+    color: $input-header-color;
+    font-weight: 400;
+    margin: 0px;
+  }
+
+  button .done {
+    background-color: $primary-button-color;
+  }
+
+  .create-new-text {
+    color: $input-header-color;
+    margin: 0;
+    font-weight: 500;
+    font-size: 13px;
+
+    .create-new-button {
+      color: $primary-button-color;
+    }
+
+    .create-new-button:hover {
+      cursor: pointer;
+    }
+  }
+
+  .new-report-fab {
+    width: 90px;
+    height: 90px;
+    line-height: 14px;
+    font-size: 50px;
+    color: $form-icon-color;
+
+    i {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+
+  .new-report-choice-text {
+    color: $input-header-color;
+    font-weight: 500;
+  }
+
+  .mat-form-field-empty.mat-form-field-label {
+    color: $form-field-focused;
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: $form-active-text-color !important;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-ripple {
+    background-color: $form-active-underline-color;
+  }
+
+  .mat-form-field-appearance-fill.mat-focused .mat-form-field-ripple {
+    background-color: $form-active-underline-color;
+  }
+
+  .mat-form-field-appearance-fill.mat-form-field-invalid
+    .mat-form-field-ripple {
+    background-color: $form-error-color;
+  }
+
+  .mat-form-field.mat-focused.mat-form-field-invalid .mat-form-field-label {
+    color: $form-error-color !important;
+  }
+
+  .mat-form-field .mat-form-field-infix input.mat-input-element {
+    height: 20px;
+  }
+}
+
+.mat-select-panel .mat-option.mat-selected {
+  .mat-option-text {
+    color: $primary;
+  }
+
+  .mat-pseudo-checkbox {
+    background: $primary;
+  }
+}
+
+/****************** DIALOG ******************/
+.dialog {
+  .title {
+    color: $primary-button-color;
+    text-align: center;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .delete {
+    color: $danger-color !important;
+  }
+
+  .warning {
+    color: $warning !important;
+  }
+
+  p {
+    max-width: 500px;
+  }
+
+  i {
+    position: relative;
+    top: 10px;
+    font-size: 40px;
+    margin-right: -40px;
+    right: 50px;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .subtitle {
+    margin-bottom: 0;
+  }
+}
+
+/******** COMMON STYLES & MEDIA QUERIES ****/
+
+html,
+body {
+  font-size: 14px !important;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.424em;
+}
+
+h3 {
+  font-size: 1.266em;
+}
+
+h4 {
+  font-size: 1.125em;
+}
+
+h5 {
+  font-size: 0.889em;
+}
+
+h6 {
+  font-size: 0.79em;
+}
+
+.display-1 {
+  font-size: 3.906em;
+}
+
+.display-2 {
+  font-size: 3.125em;
+}
+
+.display-3 {
+  font-size: 2.5em;
+}
+
+.display-4 {
+  font-size: 2em;
+}
+
+@media (min-width: 48em) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  .display-1 {
+    font-size: 6em;
+  }
+
+  .display-2 {
+    font-size: 5.5em;
+  }
+
+  .display-3 {
+    font-size: 4.5em;
+  }
+
+  .display-4 {
+    font-size: 3.5em;
+  }
+}
+
+@media (min-width: 62em) {
+  html,
+  body {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 75em) {
+  html,
+  body {
+    font-size: 18px !important;
+  }
+}

@@ -1,0 +1,50 @@
+<div class="breadcrumb-container" *ngIf="initialized">
+  <div >
+    <span (click)="goToList()"><i class="material-icons"> business </i> Organization List </span>
+     &nbsp;&nbsp;
+    <i class="material-icons arrow"> keyboard_arrow_right </i>
+    <i style="margin-left: -14px" class="material-icons arrow"> keyboard_arrow_right </i>
+    &nbsp;&nbsp;
+    <span (click)="goToReportList()">{{ selectedOrg.name }} </span>
+    &nbsp;&nbsp;
+    <i class="material-icons arrow"> keyboard_arrow_right </i>
+    <i style="margin-left: -14px" class="material-icons arrow"> keyboard_arrow_right </i>
+    &nbsp;&nbsp;
+    <span class="active">{{report.name}}</span>
+  </div>
+  <!--
+  <div *ngIf= "oneReport">
+    <span class="active"><i class="material-icons"> assessment </i>{{report.name}} ({{selectedOrg.name}})</span>
+  </div>
+   -->
+</div>
+<div class="main-content-view">
+  <div class="left-main-content-view" *ngIf="report && initialized">
+    <iframe class="report" [src]="embedLink" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+  <div class="right-main-content-view" *ngIf="report && initialized">
+    <div class="filter information">
+      <h4 class="info-title">Report Information</h4>
+      <p>
+        Name: <span class="info">{{ report.name }} </span>
+      </p>
+      <p>
+        Organization: <span class="info">{{ selectedOrg.name }} </span>
+      </p>
+      <p>
+        Date: <span class="info"> {{ report.created_at | date }}</span>
+      </p>
+      <p>
+        Datastudio Link: <span class="info"> {{ report.link }}</span>
+      </p>
+    </div>
+  </div>
+  <div *ngIf="!initialized && !error" style="margin:auto; padding-top: 50px;">
+    <mat-spinner></mat-spinner>
+    <p style="text-align: center;">Loading...</p>
+  </div>
+
+  <div *ngIf="error" style="text-align: center; width: 100%;">
+      <app-error-message [errorMessage]="errorMessage" (tryAgain)="reInitialize()"></app-error-message>
+    </div>
+</div>

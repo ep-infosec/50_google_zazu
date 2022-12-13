@@ -1,0 +1,88 @@
+@import "main-style-variables.scss";
+
+
+.tabs {
+  background-color: $tab-background-color;
+  margin: 20px 0;
+  box-shadow: $card-box-shadow;
+}
+
+::ng-deep .mat-tab-body .mat-tab-body-content {
+  overflow: hidden;
+}
+
+::ng-deep .tabs .mat-tab-header {
+  box-shadow: 0 1px 4px rgba(101, 101, 101, .7) !important;
+  border-bottom: none !important;
+}
+
+::ng-deep .tabs .mat-tab-label {
+  color: $tab-text-color;
+  opacity: 1;
+  font-size: 17px;
+}
+
+::ng-deep .tabs .mat-tab-label-active {
+  color: $tab-active-color;
+}
+
+::ng-deep .tabs .mat-tab-body {
+  padding: 10px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+::ng-deep .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: $tab-active-color;
+  height: 3px;
+}
+
+.data-rules-card {
+  border: $card-border;
+  border-radius: $card-border-radius;
+}
+
+.mat-tab {
+  padding: 5px;
+}
+
+.data-rules-section {
+  margin-bottom: 10px;
+  display: flex;
+
+  .left-main-content-view {
+    margin-top: 10px;
+    p {
+      margin: 0;
+      color: $card-secondary-color;
+      font-weight: 500;
+    }
+
+    .buttons {
+      text-align: right;
+    }
+
+    hr {
+      border-top: 1px solid $card-tertiary-color;
+      margin-top: -10px;
+    }
+
+    .title {
+      color: $card-title-color;
+    }
+
+    .mat-expansion-panel-content {
+      padding-top: 5px;
+      border-top: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    .mat-expansion-panel {
+      border-radius: 3px;
+    }
+  }
+}
+
+.create-mat-menu-style {
+  position: absolute;
+    left: 40%;
+    bottom: 0;
+}

@@ -1,0 +1,77 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { PaginationService } from '../services/pagination.service';
+@Pipe({
+  name: 'rawReportList'
+})
+export class RawReportListPipe implements PipeTransform {
+  constructor(private paginationService: PaginationService) {}
+  transform(
+    reportList: any[],
+    searchName: string,
+    organization: string,
+    sort: string,
+    page: number
+  ): any {
+    let currentList = reportList;
+    // If there's a reportList
+    if (reportList) {
+      // If there's a search
+      if (searchName) {
+        searchName = searchName.toLowerCase();
+        currentList = currentList.filter(
+          (el: any) => el.name.toLowerCase().indexOf(searchName) > -1
+        );
+      }
+
+      // if there's a organization
+      if (organization) {
+        if (organization !== 'All') {
+          currentList = currentList.filter(element => {
+            const temp = element.organizations.filter(org => {
+              return org._id === organization;
+            });
+            return temp.length > 0;
+          });
+        }
+      }
+      // if there's a sort
+      if (sort) {
+        if (sort === 'Alphabetical') {
+          const sorted = currentList.sort(
+            (a, b) => (a.name > b.name ? 1 : a.name === b.name ? 0 : -1)
+          );
+          if (sort.charAt(0) === '-') {
+            sorted.reverse();
+          }
+          currentList = sorted;
+        }
+        if (sort === 'Latest') {
+          const sorted = currentList.sort(
+            (a, b) =>
+              new Date(a.created_at) < new Date(b.created_at)
+                ? 1
+                : new Date(a.created_at) === new Date(b.created_at)
+                  ? 0
+                  : -1
+          );
+          currentList = sorted;
+        }
+      }
+      this.paginationService.changeTotalPages(
+        Math.ceil(
+          currentList.length / this.paginationService.pagination.itemsPerPage
+        )
+      );
+
+      return currentList.slice(
+        this.paginationService.pagination.currentPage *
+          this.paginationService.pagination.itemsPerPage -
+          this.paginationService.pagination.itemsPerPage,
+        this.paginationService.pagination.itemsPerPage *
+          this.paginationService.pagination.currentPage
+      );
+    }
+
+    return currentList;
+  }
+}
